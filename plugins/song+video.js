@@ -1,88 +1,103 @@
-const {cmd , commands} = require('../command')
-const fg = require("api-dylux")
-const yts = require("yt-search")
+const { cmd, commands } = require('../command');
+const ytdl = require('ytdl-core');
+const yts = require('yt-search');
 
+// Command for downloading songs
 cmd({
     pattern: "song",
-    desc: "download songs",
+    desc: "Download songs",
     category: "download",
     filename: __filename
-},
-async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
-try{
-    if(!q) return(please url or title)
-    const search = await yts(q)
-    const data = search.video[0]
+}, async (conn, mek, m, { from, quoted, body, isCmd, command, args, q }) => {
+    try {
+        if (!q) return conn.sendMessage(from, { text: "Please provide a URL or title." }, { quoted: mek });
 
-    let desc = '
-    🎞️ *Senal MD Audio Downloader* 📄
+        const search = await yts(q);
+        if (!search || !search.videos || search.videos.length === 0) {
+            return conn.sendMessage(from, { text: "No results found." }, { quoted: mek });
+        }
 
-    title: ${data.title}
-    📖 description: ${data.description}
-    time: ${data.time}
-    ago: ${data.ago}
-    👁️ views: ${data.views}
+        const data = search.videos[0];
 
-    Made By Senal-MD ✔️
-    
-    '
-    await conn.sendmessage(from,{image:{url: data.thumbnail},caption:desc},{quoted:mek});
+        let desc = `
+🎞️ *Senal MD Audio Downloader* 📄
+Title: ${data.title}
+📖 Description: ${data.description}
+Time: ${data.time}
+Ago: ${data.ago}
+👁️ Views: ${data.views}
+Made By Senal-MD ✔️
+`;
+        await conn.sendMessage(from, { image: { url: data.thumbnail }, caption: desc }, { quoted: mek });
 
-    //download audio
+        // Download audio
+        const stream = ytdl(data.url, { filter: 'audioonly', quality: 'highestaudio' });
 
-    let down = await fg.yta(url)
-    let downloadUrl = down.dl_url
+        stream.on('error', (error) => {
+            console.error('Download error:', error);
+            if (error.code === 'ETIMEDOUT' || error.code === 'ECONNREFUSED') {
+                return conn.sendMessage(from, { text: "Network error. Please try again later." }, { quoted: mek });
+            } else if (error.message.includes("410")) {
+                return conn.sendMessage(from, { text: "The video is no longer available. Please try another video." }, { quoted: mek });
+            }
+            return conn.sendMessage(from, { text: `Error: ${error.message}` }, { quoted: mek });
+        });
 
-    //send audio message
-    await conn.sendMessage(from.{audio: {url:downloadUrl},mimetype:"audio/mpeg"},{quoted:mek})
-    await conn.sendMessage(from.{document: {url:downloadUrl},mimetype:"audio/mpeg",fileName:data.title + ".mp3",caption:"Made By SenalMD"},{quoted:mek})
+        await conn.sendMessage(from, { audio: { url: data.url }, mimetype: "audio/mpeg" }, { quoted: mek });
+        await conn.sendMessage(from, { document: { url: data.url }, mimetype: "audio/mpeg", fileName: `${data.title}.mp3`, caption: "Made By SenalMD" }, { quoted: mek });
 
-}catch(e){
-    console.log(e)
-    reply('${e}')
-}
-})
+    } catch (e) {
+        console.log(e);
+        conn.sendMessage(from, { text: `Error: ${e.message}` }, { quoted: mek });
+    }
+});
 
-//==========video dl========//
-
+// Command for downloading videos
 cmd({
     pattern: "video",
-    desc: "download videos",
+    desc: "Download videos",
     category: "download",
     filename: __filename
-},
-async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
-try{
-    if(!q) return(please url or title)
-    const search = await yts(q)
-    const data = search.video[0]
+}, async (conn, mek, m, { from, quoted, body, isCmd, command, args, q }) => {
+    try {
+        if (!q) return conn.sendMessage(from, { text: "Please provide a URL or title." }, { quoted: mek });
 
-    let desc = '
-    🎞️ *Senal MD video Downloader* 📄
+        const search = await yts(q);
+        if (!search || !search.videos || search.videos.length === 0) {
+            return conn.sendMessage(from, { text: "No results found." }, { quoted: mek });
+        }
 
-    title: ${data.title}
-    📖 description: ${data.description}
-    time: ${data.time}
-    ago: ${data.ago}
-    👁️ views: ${data.views}
+        const data = search.videos[0];
 
-    Made By Senal-MD ✔️
-    
-    '
-    await conn.sendmessage(from,{image:{url: data.thumbnail},caption:desc},{quoted:mek});
+        let desc = `
+🎞️ *Senal MD Video Downloader* 📄
+Title: ${data.title}
+📖 Description: ${data.description}
+Time: ${data.time}
+Ago: ${data.ago}
+👁️ Views: ${data.views}
+Made By Senal-MD ✔️
+`;
+        await conn.sendMessage(from, { image: { url: data.thumbnail }, caption: desc }, { quoted: mek });
 
-    //download video
+        // Download video
+        const stream = ytdl(data.url, { filter: 'videoandaudio', quality: 'highestvideo' });
 
-    let down = await fg.ytv(url)
-    let downloadUrl = down.dl_url
+        stream.on('error', (error) => {
+            console.error('Download error:', error);
+            if (error.code === 'ETIMEDOUT' || error.code === 'ECONNREFUSED') {
+                return conn.sendMessage(from, { text: "Network error. Please try again later." }, { quoted: mek });
+            } else if (error.message.includes("410")) {
+                return conn.sendMessage(from, { text: "The video is no longer available. Please try another video." }, { quoted: mek });
+            }
+            return conn.sendMessage(from, { text: `Error: ${error.message}` }, { quoted: mek });
+        });
 
-    //send video message
-    await conn.sendMessage(from.{video: {url:downloadUrl},mimetype:"video/mp4"},{quoted:mek})
-    await conn.sendMessage(from.{document: {url:downloadUrl},mimetype:"video/mp4",fileName:data.title + ".mp4",caption:"Made By SenalMD"},{quoted:mek})
+        await conn.sendMessage(from, { video: { url: data.url }, mimetype: "video/mp4" }, { quoted: mek });
+        await conn.sendMessage(from, { document: { url: data.url }, mimetype: "video/mp4", fileName: `${data.title}.mp4`, caption: "Made By SenalMD" }, { quoted: mek });
 
-
-}catch(e){
-    console.log(e)
-    reply('${e}')
-}
-})
+    } catch (e) {
+        console.log(e);
+        conn.sendMessage(from, { text: `Error: ${e.message}` }, { quoted: mek });
+    }
+});
