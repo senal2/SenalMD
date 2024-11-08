@@ -1,5 +1,5 @@
 {
-  "name": "SenalMD",
+  "name": "senalmd",
   "version": "1.0.0",
   "description": "A WhatsApp bot created using Node.js",
   "main": "index.js",
@@ -11,8 +11,10 @@
   "dependencies": {
     "@whiskeysockets/baileys": "6.6.0",
     "@adiwajshing/keyed-db": "^0.2.4",
+    "api-dylux": "^1.8.5",
     "pino": "^7.0.5",
     "pm2": "^5.2.0",
+    "@bochilteam/scraper": "*",
     "util": "^0.12.4",
     "express": "latest",
     "axios": "^1.2.5",
@@ -25,6 +27,8 @@
     "qrcode-terminal": "^0.12.0",
     "yt-search": "^2.12.1",
     "ytdl-core": "^4.11.5",
-    "api-dylux": "^1.8.5"
+    "youtube-yts": "^2.0.0",
+    "youtubedl-core": "npm:@distube/ytdl-core"
+    
   }
 }
