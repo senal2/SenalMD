@@ -1,8 +1,29 @@
 const { cmd } = require('../command');
 const yts = require('yt-search');
-const fg = require('api-dylux'); // For downloading YouTube media
-const fs = require('fs');
+const { exec } = require('child_process');
 const path = require('path');
+const fs = require('fs');
+
+// Paths to yt-dlp and cookies
+const YT_DLP_PATH = '/home/codespace/.python/current/bin/yt-dlp';
+const COOKIES_PATH = path.join(__dirname, 'cookies.txt');
+
+// Helper function to fetch download link using yt-dlp with cookies
+const getDownloadLink = async (url, format) => {
+    return new Promise((resolve, reject) => {
+        const audioFormat = format === 'mp3' ? 'bestaudio' : 'bestvideo';
+        
+        // Command includes cookies for authenticated requests
+        const command = `${YT_DLP_PATH} -f ${audioFormat} --cookies ${COOKIES_PATH} --get-url "${url}"`;
+        
+        exec(command, (error, stdout, stderr) => {
+            if (error) {
+                return reject(new Error(`Error executing yt-dlp: ${stderr || error.message}`));
+            }
+            resolve(stdout.trim());
+        });
+    });
+};
 
 // Command to download and send audio from YouTube
 cmd({
@@ -10,11 +31,13 @@ cmd({
     desc: "Download song from YouTube",
     category: "download",
     filename: __filename
-}, async (conn, mek, m, { from, quoted, body, isCmd, command, args, q }) => {
+}, async (conn, mek, m, { from, quoted, args }) => {
     try {
-        if (!q) return conn.sendMessage(from, { text: "Please provide a URL or title." }, { quoted: mek });
+        const query = args.join(" ");
+        if (!query) return conn.sendMessage(from, { text: "Please provide a song title or URL." }, { quoted: mek });
 
-        const search = await yts(q);
+        // Search for the video on YouTube
+        const search = await yts(query);
         const videoData = search.videos[0];
         if (!videoData) return conn.sendMessage(from, { text: "No results found." }, { quoted: mek });
 
@@ -28,20 +51,21 @@ Title: ${videoData.title}
 
 Made By Senal-MD ✔️
         `;
+
         await conn.sendMessage(from, { image: { url: videoData.thumbnail }, caption: desc }, { quoted: mek });
 
         if (!videoData.url) {
             return conn.sendMessage(from, { text: "No valid URL found for the video." }, { quoted: mek });
         }
 
-        // Using api-dylux to get MP3 download link
-        const mp3Data = await fg.ytmp3(videoData.url);
-        if (!mp3Data || !mp3Data.link) {
+        // Get MP3 download link using yt-dlp with cookies
+        const mp3Link = await getDownloadLink(videoData.url, 'mp3');
+        if (!mp3Link) {
             return conn.sendMessage(from, { text: "Error fetching download link." }, { quoted: mek });
         }
 
-        await conn.sendMessage(from, { audio: { url: mp3Data.link }, mimetype: "audio/mpeg" }, { quoted: mek });
-
+        // Send the audio file directly
+        await conn.sendMessage(from, { audio: { url: mp3Link }, mimetype: "audio/mpeg" }, { quoted: mek });
     } catch (e) {
         console.log(e);
         conn.sendMessage(from, { text: `Error: ${e.message}` }, { quoted: mek });
@@ -54,11 +78,13 @@ cmd({
     desc: "Download video from YouTube",
     category: "download",
     filename: __filename
-}, async (conn, mek, m, { from, quoted, body, isCmd, command, args, q }) => {
+}, async (conn, mek, m, { from, quoted, args }) => {
     try {
-        if (!q) return conn.sendMessage(from, { text: "Please provide a URL or title." }, { quoted: mek });
+        const query = args.join(" ");
+        if (!query) return conn.sendMessage(from, { text: "Please provide a video title or URL." }, { quoted: mek });
 
-        const search = await yts(q);
+        // Search for the video on YouTube
+        const search = await yts(query);
         const videoData = search.videos[0];
         if (!videoData) return conn.sendMessage(from, { text: "No results found." }, { quoted: mek });
 
@@ -72,20 +98,21 @@ Title: ${videoData.title}
 
 Made By Senal-MD ✔️
         `;
+
         await conn.sendMessage(from, { image: { url: videoData.thumbnail }, caption: desc }, { quoted: mek });
 
         if (!videoData.url) {
             return conn.sendMessage(from, { text: "No valid URL found for the video." }, { quoted: mek });
         }
 
-        // Using api-dylux to get MP4 download link
-        const mp4Data = await fg.ytmp4(videoData.url);
-        if (!mp4Data || !mp4Data.link) {
+        // Get MP4 download link using yt-dlp with cookies
+        const mp4Link = await getDownloadLink(videoData.url, 'mp4');
+        if (!mp4Link) {
             return conn.sendMessage(from, { text: "Error fetching download link." }, { quoted: mek });
         }
 
-        await conn.sendMessage(from, { video: { url: mp4Data.link }, mimetype: "video/mp4" }, { quoted: mek });
-
+        // Send the video file directly
+        await conn.sendMessage(from, { video: { url: mp4Link }, mimetype: "video/mp4" }, { quoted: mek });
     } catch (e) {
         console.log(e);
         conn.sendMessage(from, { text: `Error: ${e.message}` }, { quoted: mek });
