@@ -1,10 +1,10 @@
 const { cmd } = require('../command');
 const yts = require('yt-search');
 const { exec } = require('child_process');
+const { uploadMedia } = require('./uploader');
 const path = require('path');
-const fs = require('fs');
 
-// Paths to yt-dlp and cookies
+// Path to yt-dlp and cookies file
 const YT_DLP_PATH = '/home/codespace/.python/current/bin/yt-dlp';
 const COOKIES_PATH = path.join(__dirname, 'cookies.txt');
 
@@ -118,32 +118,3 @@ Made By Senal-MD ✔️
         conn.sendMessage(from, { text: `Error: ${e.message}` }, { quoted: mek });
     }
 });
-
-// Helper function to search YouTube and return video details
-async function searchYouTube(query) {
-    try {
-        const result = await yts(query);
-        if (!result || !result.videos || result.videos.length === 0) {
-            throw new Error('No videos found for your query');
-        }
-        const video = result.videos[0]; // Get the first video
-        return video;
-    } catch (e) {
-        console.error('Error searching YouTube:', e.message);
-        return null;
-    }
-}
-
-// Example function to test search
-async function testSearch(query) {
-    const video = await searchYouTube(query);
-    if (video) {
-        console.log(`Found video: ${video.title}`);
-        console.log(`Video URL: ${video.url}`);
-    } else {
-        console.log('No video found');
-    }
-}
-
-// Example Usage: Search for a song
-testSearch('superman theme');
