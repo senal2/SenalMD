@@ -32,7 +32,7 @@ async (conn, mek, m, { from, quoted, body, q, reply }) => {
         
         await conn.sendMessage(
             from,
-            { document: buff, caption: `> *©ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀʟᴠɪɴ ᴛᴇᴄʜ*`, mimetype: "application/vnd.android.package-archive", filename: `${appInfo.appname}.apk` },
+            { document: buff, caption: `> *© 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 ᴍʀ ꜱᴇɴᴀʟ*`, mimetype: "application/vnd.android.package-archive", filename: `${appInfo.appname}.apk` },
             { quoted: mek }
         );
         
