@@ -25,7 +25,7 @@ if(!q) return await reply("𝖯𝗅𝖾𝖺𝗌𝖾 𝖦𝗂𝗏𝖾 𝖬𝖾 �
 const mfire = await fetchJson(`${apilink}/download/mfire?url=${q}`);
   
 const msg = `
-           *乂 MALVIN-MD MEDIAFIRE DOWNLOADER* 🔥
+           *乂 SENAL-MD MEDIAFIRE DOWNLOADER* 🔥
 
 
 • *𝖥𝗂𝗅𝖾 𝖭𝖺𝗆𝖾* - ${mfire.result.fileName}
@@ -46,13 +46,13 @@ const msg = `
           forwardingScore: 999,
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
-          newsletterName: '👾 ＭＡＬＶＩＮ  |   𝚃𝙴𝙲𝙷 ジ',
+          newsletterName: '👾 ＳＥＮＡＬ  |   ITS ジ',
           newsletterJid: "120363296605464049@newsletter",
           },
           externalAdReply: {
-              title: `ＭＡＬＶＩＮ-MD Mediafire Downloader`,
+              title: `ＳＥＮＡＬ-MD Mediafire Downloader`,
               body: `Can't Find The Information. You Can Try Another Way. Error Code 4043`,
-              thumbnailUrl: `https://files.catbox.moe/gdvaaw.jpg`,
+              thumbnailUrl: `https://files.catbox.moe/gm88nn.png`,
               sourceUrl: ``,
               mediaType: 1,
               renderLargerThumbnail: true
