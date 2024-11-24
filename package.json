@@ -1,15 +1,14 @@
 {
-  "name": "senalmd",
+  "name": "SENAL-MD-V1",
   "version": "1.0.0",
-  "description": "A WhatsApp bot created using Node.js",
+  "description": "SENAL-MD MULTI DEVICE WHATSAPP BOT BY MALVIN TECH",
   "main": "index.js",
   "scripts": {
-    "postinstall": "pip install yt-dlp",
-    "start": "pm2 start index.js --deep-monitoring --attach --name wabot",
-    "stop": "pm2 stop wabot",
-    "restart": "pm2 restart wabot"
+    "start": "pm2 start index.js --deep-monitoring --attach --name SENAL-MD-V1",
+    "stop": "pm2 stop SENAL-MD-V1",
+    "restart": "pm2 restart SENAL-MD-V1"
   },
- "dependencies": {
+  "dependencies": {
     "@adiwajshing/keyed-db": "^0.2.4",
     "9gag":"4.0.0",
     "mongoose":"8.6.1",
