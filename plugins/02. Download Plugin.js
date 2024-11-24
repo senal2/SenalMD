@@ -116,7 +116,7 @@ const apisg = "https://prabath-md-api.up.railway.app/api/";
 const { cmd, commands } = require("../command");
 const fg = require("api-dylux");
 const yts = require("yt-search");
-const pdfUrl = "https://files.catbox.moe/gdvaaw.jpg";
+const pdfUrl = "https://files.catbox.moe/gm88nn.png";
 
 // Function to extract the video ID from youtu.be or YouTube links
 function extractYouTubeId(url) {
@@ -206,12 +206,12 @@ cmd(
                         forwardingScore: 999,
                         isForwarded: true,
                         forwardedNewsletterMessageInfo: {
-                            newsletterName: "👾 ＭＡＬＶＩＮ  |   𝚃𝙴𝙲𝙷 ジ",
+                            newsletterName: "👾 SENAL  |   𝚃𝙴𝙲𝙷 ジ",
                             newsletterJid: "120363306168354073@newsletter",
                         },
                         externalAdReply: {
-                            title: `SAHAS-MD Song Downloader`,
-                            body: `${data.title} : Powerd By ＭＡＬＶＩＮ-MD Song Information Search Engine`,
+                            title: `SENAL-MD Song Downloader`,
+                            body: `${data.title} : Powerd By SENAL-MD Song Information Search Engine`,
                             thumbnailUrl: data.thumbnail,
                             sourceUrl: ``,
                             mediaType: 1,
@@ -262,7 +262,7 @@ cmd(
                                 {
                                     audio: { url: downloadUrl },
                                     mimetype: "audio/mpeg",
-                                    caption: `> *©ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀʟᴠɪɴ ᴛᴇᴄʜ*`,
+                                    caption: `> *©ᴘᴏᴡᴇʀᴇᴅ ʙʏ SENAL TECH*`,
                                 },
                                 { quoted: mek },
                             );
@@ -273,8 +273,8 @@ cmd(
                                 {
                                     document: { url: downloadUrl },
                                     mimetype: "audio/mpeg",
-                                    fileName: `ᴍᴀʟᴠɪɴ-ᴍᴅ v2.0.0 | ${data.title}.mp3`,
-                                    caption: `> *©ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀʟᴠɪɴ ᴛᴇᴄʜ*`,
+                                    fileName: `SENAL-ᴍᴅ v1.0.0 | ${data.title}.mp3`,
+                                    caption: `> *© 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃*`,
                                 },
                                 { quoted: mek },
                             );
@@ -375,12 +375,12 @@ cmd(
                         forwardingScore: 999,
                         isForwarded: true,
                         forwardedNewsletterMessageInfo: {
-                            newsletterName: "👾 ＭＡＬＶＩＮ  |   𝚃𝙴𝙲𝙷 ジ",
+                            newsletterName: "👾 SENAL  |   𝚃𝙴𝙲𝙷 ジ",
                             newsletterJid: "120363306168354073@newsletter",
                         },
                         externalAdReply: {
-                            title: `MALVIN-MD Video Downloader`,
-                            body: `${data.title} : Powerd By MALVIN-MD Song Information Search Engine`,
+                            title: `SENAL-MD Video Downloader`,
+                            body: `${data.title} : 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃 Song Information Search Engine`,
                             thumbnailUrl: data.thumbnail,
                             sourceUrl: ``,
                             mediaType: 1,
@@ -444,8 +444,8 @@ cmd(
                                 {
                                     document: { url: downloadUrl },
                                     mimetype: "video/mp4",
-                                    fileName: `ᴍᴀʟᴠɪɴ-ᴍᴅ V2.0.0 | ${data.title}.mp4`,
-                                    caption: `> *©ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀʟᴠɪɴ ᴛᴇᴄʜ*
+                                    fileName: `SENAL-ᴍᴅ V1.0.0 | ${data.title}.mp4`,
+                                    caption: `> *© 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃*
 `,
                                 },
                                 { quoted: mek },
@@ -560,13 +560,13 @@ cmd(
                                 forwardingScore: 999,
                                 isForwarded: true,
                                 forwardedNewsletterMessageInfo: {
-                                    newsletterName: "👾 ＭＡＬＶＩＮ  |   𝚃𝙴𝙲𝙷 ジ",
+                                    newsletterName: "👾 SENAL  |   𝚃𝙴𝙲𝙷 ジ",
                                     newsletterJid: "120363306168354073@newsletter",
                                 },
                                     externalAdReply: {
                                           title: `MALVIN-MD FB Downloader`,
-                                          body: `Undifended : Powerd By MALVIN-MD FB Information Search Engine`,
-                                          thumbnailUrl: `https://files.catbox.moe/gdvaaw.jpg`,
+                                          body: `Undifended : 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃 FB Information Search Engine`,
+                                          thumbnailUrl: `https://files.catbox.moe/gm88nn.png`,
                                           sourceUrl:  ``,
                                           mediaType: 1,
                                           renderLargerThumbnail: true
@@ -701,7 +701,7 @@ cmd({
         if (!q) return await reply("𝖯𝗅𝖾𝖺𝗌𝖾 𝖦𝗂𝗏𝖾 𝖬𝖾 𝖯𝗋𝗈𝗏𝗂𝖽𝖾 `𝖳𝗂𝗄𝗍𝗈𝗄 𝖴𝗋𝗅` ❗");
 
         // Watermark message
-        let wm = `*乂 MALVIN-MD TIK TOK DOWNLOADER*
+        let wm = `*乂 SENAL-MD TIK TOK DOWNLOADER*
 
 🎬 𝖳𝖺𝗍𝗂𝗅𝖾 : Undifended
 🖇️ 𝖡𝖺𝗌𝖾 𝖴𝗋𝗅 : www.tiktok.com
@@ -712,7 +712,7 @@ cmd({
 1️⃣  𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽 : 𝖵𝗂𝖽𝖾𝗈 𝖧𝖣 𝖳𝗒𝗉𝖾. ( 𝖶𝗂𝗍𝗁𝗈𝗎𝗍 𝖶𝖺𝗍𝖾𝗋𝗆𝖺𝗋𝗄 )
 2️⃣  𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽 : 𝖠𝗎𝖽𝗂𝗈 𝖳𝗒𝗉𝖾.
 ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ 
-> *©ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀʟᴠɪɴ ᴛᴇᴄʜ*`;
+> *©ᴘᴏᴡᴇʀᴇᴅ ʙʏ SENAL ᴛᴇᴄʜ*`;
 
         const sentMessage = await conn.sendMessage(
             from,
@@ -722,13 +722,13 @@ cmd({
                     forwardingScore: 999,
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
-                        newsletterName: "👾 ＭＡＬＶＩＮ  |   𝚃𝙴𝙲𝙷 ジ",
+                        newsletterName: "👾 SENAL  |   𝚃𝙴𝙲𝙷 ジ",
                         newsletterJid: "120363306168354073@newsletter",
                     },
                         externalAdReply: {
-                              title: `MALVIN-MD Tik Tok Downloader`,
-                              body: `Undifended : Powerd By MALVIN-MD Tiktok Information Search Engine`,
-                              thumbnailUrl: `https://files.catbox.moe/gdvaaw.jpg`,
+                              title: `SENAL-MD Tik Tok Downloader`,
+                              body: `Undifended : 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃 Tiktok Information Search Engine`,
+                              thumbnailUrl: `https://files.catbox.moe/gm88nn.png`,
                               sourceUrl:  ``,
                               mediaType: 1,
                               renderLargerThumbnail: true
@@ -765,7 +765,7 @@ cmd({
                         video: { url: video }, 
                         caption: `‎ ‎𝖳 𝖨 𝖪 𝖳 𝖮 𝖪  𝖧 𝖣  𝖵 𝖨 𝖣 𝖤 𝖮  ( 7 2 0 𝗉  )
                             ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎
-> *©ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀʟᴠɪɴ ᴛᴇᴄʜ*`
+> *© 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃*`
 
                     }, { quoted: msg });
                 } else if (userReply === '2') {
@@ -809,7 +809,7 @@ function formatFileSize(bytes) {
 }
 
 // Google Drive Downloader with size limit (e.g., 100MB limit)
-const MAX_DOWNLOAD_SIZE = 500 * 1024 * 1024; // 100 MB
+const MAX_DOWNLOAD_SIZE = 500 * 1024 * 1024; // 2 GB
 
 cmd({
     pattern: "gdrive",
@@ -829,24 +829,24 @@ cmd({
                                                   const downloadingMsg = await conn.sendMessage(
                                                       from,
                                                       {
-                                                          text: `*乂 ＭＡＬＶＩＮ-MD GDRIVE DOWNLOADER*
+                                                          text: `*乂 SENAL-MD GDRIVE DOWNLOADER*
                                                           
 📁 𝖭𝖺𝗆𝖾 : ${fileInfo.fileName}
 📻 𝖥𝗂𝗅𝖾 𝖲𝗂𝗓𝖾 : ${fileInfo.fileSize}
 🖇️ 𝖡𝖺𝗌𝖾 𝖴𝗋𝗅 : www.gdrive.com
 ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎
-> *©ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀʟᴠɪɴ ᴛᴇᴄʜ*`,
+> *© 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃*`,
                                                           contextInfo: {
                                                               forwardingScore: 999,
                                                               isForwarded: true,
                                                               forwardedNewsletterMessageInfo: {
-                                                                  newsletterName: "👾 ＭＡＬＶＩＮ  |   𝚃𝙴𝙲𝙷 ジ",
+                                                                  newsletterName: "👾 SENAL  |   𝚃𝙴𝙲𝙷 ジ",
                                                                   newsletterJid: "120363306168354073@newsletter",
                                                               },
                                                               externalAdReply: {
-                                                                  title: `MALVIN-MD Gdrive Downloader`,
-                                                                  body: `${fileInfo.fileName || fileInfo.title || `Undifended`} : Powerd By MALVIN-MD Gdrive Information Search Engine`,
-                                                                  thumbnailUrl: `https://files.catbox.moe/gdvaaw.jpg`,
+                                                                  title: `SENAL-MD Gdrive Downloader`,
+                                                                  body: `${fileInfo.fileName || fileInfo.title || `Undifended`} : 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃 Gdrive Information Search Engine`,
+                                                                  thumbnailUrl: `https://files.catbox.moe/gm88nn.png`,
                                                                   sourceUrl: ``,
                                                                   mediaType: 1,
                                                                   renderLargerThumbnail: true, 
@@ -887,7 +887,7 @@ cmd({
             return await conn.sendMessage(from, { react: { text: "⚠️", key: mek.key } });
         }
 
-        const caption = `> *©ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀʟᴠɪɴ ᴛᴇᴄʜ*`;
+        const caption = `> *© 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃*`;
         await conn.sendMessage(from, { 
             document: { url: fileInfo.download || fileInfo.link || fileInfo.url }, 
             fileName: fileInfo.fileName || fileInfo.title, 
@@ -979,24 +979,24 @@ async (conn, mek, m, { from, reply, q, pushname }) => {
 
 
 
-                text: `*乂 MALVIN-MD APK DOWNLOADER*
+                text: `*乂 SENAL-MD APK DOWNLOADER*
 
 📁 𝖭𝖺𝗆𝖾 : ${apkName}
 📻 𝖥𝗂𝗅𝖾 𝖲𝗂𝗓𝖾 : ${apkSize} MB
 📆 𝖫𝖺𝗌𝗍 𝖴𝗉𝖽𝖺𝗍𝖾 : ${apkLastUpdate}
 🖇️ 𝖡𝖺𝗌𝖾 𝖴𝗋𝗅 : www.playstore.com
 ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎
-> *©ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀʟᴠɪɴ ᴛᴇᴄʜ*`,
+> *© 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃*`,
                 contextInfo: {
                     forwardingScore: 999,
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
-                        newsletterName: "👾 ＭＡＬＶＩＮ  |   𝚃𝙴𝙲𝙷 ジ",
+                        newsletterName: "👾 SENAL  |   𝚃𝙴𝙲𝙷 ジ",
                         newsletterJid: "120363306168354073@newsletter",
                     },
                     externalAdReply: {
-                        title: `MALVIN-MD Application Downloader`,
-                        body: `${apkName} : Powerd By MALVIN-MD Apk Information Search Engine`,
+                        title: `SENAL-MD Application Downloader`,
+                        body: `${apkName} : Powerd By SENAL-MD Apk Information Search Engine`,
                         thumbnailUrl: apkData.icon,
                         sourceUrl: ``,
                         mediaType: 1,
@@ -1040,8 +1040,8 @@ async (conn, mek, m, { from, reply, q, pushname }) => {
             document: { url: filePath },
             mimetype: 'application/vnd.android.package-archive',
             fileName: `${apkName}.apk`,
-            caption: `ᴍᴀʟᴠɪɴ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ ㋛`,
-            footer: 'ᴍᴀʟᴠɪɴ • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ ㋛'
+            caption: `SENAL • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ ㋛`,
+            footer: 'SENAL • ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ-ᴡᴀ-ʙᴏᴛ ㋛'
         }, { quoted: mek });
 
         fs.unlinkSync(filePath);
@@ -1069,8 +1069,8 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
         let data = await fetchJson(`${baseUrl}/api/twitterdl?url=${q}`)
         reply("*𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽𝗂𝗇𝗀...*")
         //send video (hd,sd)
-        await conn.sendMessage(from, { video: { url: data.data.data.HD }, mimetype: "video/mp4", caption: `- HD \n\n > *©ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀʟᴠɪɴ ᴛᴇᴄʜ*` }, { quoted: mek })
-        await conn.sendMessage(from, { video: { url: data.data.data.SD }, mimetype: "video/mp4", caption: `- SD \n\n > *©ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴀʟᴠɪɴ ᴛᴇᴄʜ*` }, { quoted: mek })  
+        await conn.sendMessage(from, { video: { url: data.data.data.HD }, mimetype: "video/mp4", caption: `- HD \n\n > *© 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃*` }, { quoted: mek })
+        await conn.sendMessage(from, { video: { url: data.data.data.SD }, mimetype: "video/mp4", caption: `- SD \n\n > *© 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃*` }, { quoted: mek })  
         //send audio    
         await conn.sendMessage(from, { audio: { url: data.data.data.audio }, mimetype: "audio/mpeg" }, { quoted: mek })  
     } catch (e) {
