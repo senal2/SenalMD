@@ -34,7 +34,7 @@ const msg = `
 
 • *𝖴𝗉𝗅𝗈𝖺𝖽 𝖣𝖺𝗍𝖾 𝖠𝗇𝖽 𝖳𝗂𝗆𝖾* - ${mfire.result.date}
 
-> *© 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃*`
+> *© 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 ᴍʀ ꜱᴇɴᴀʟ*`
 
        // Sending the image with caption
           const sentMsg = await conn.sendMessage(from, {
