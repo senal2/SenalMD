@@ -2,7 +2,7 @@
 
 
 const { cmd } = require('../command')
-const { fetchJson } = require('../DATABASE/functions')
+const { fetchJson } = require('../lib/functions')
 
 const apilink = 'https://dark-yasiya-api-new.vercel.app' // API LINK ( DO NOT CHANGE THIS!! )
 
