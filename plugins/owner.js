@@ -27,18 +27,17 @@ let dec = `╭───────────────◎◎▷
 
 > ➪𝐌𝐘 𝐀𝐆𝐄☞︎︎︎ ♕︎18 TO 25.♕︎
 
-
 > 𝗠𝗬 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣 𝗡𝗨𝗠𝗕𝗘𝗥☟︎︎︎☟︎︎︎☟︎︎︎☟︎︎︎
 
- https://wa.me/263714757857?text=_♕︎Malvin-King♕︎_𝙸_𝚕𝚒𝚔𝚎_𝚖𝚎𝚎𝚝_𝚢𝚘𝚞👻👋_
-
+ https://wa.link/bgbwbp
+ 
 > 𝐨𝐰𝐞𝐧𝐞𝐫 : SENAL-MD OᖴIᑕIᗩᒪ
 ╰───────────────◎◎▷
 
 
 > © 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃
 `
-await conn.sendMessage(from,{image:{url: `https://files.catbox.moe/n5vvij.jpg`},caption:dec},{quoted:mek});
+await conn.sendMessage(from,{image:{url: `https://files.catbox.moe/gm88nn.png`},caption:dec},{quoted:mek});
 
 }catch(e){
 console.log(e)
