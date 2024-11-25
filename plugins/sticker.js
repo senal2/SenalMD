@@ -1,7 +1,7 @@
 const config = require('../config');
 const { Sticker, StickerTypes } = require('wa-sticker-formatter');
 const { cmd } = require('../command');
-const { getRandom } = require('../DATABASE/functions');
+const { getRandom } = require('../lib/functions');
 const fs = require('fs').promises;
 
 let imgmsg = config.LANG === 'SI' ? 'ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴘʜᴏᴛᴏ!' : 'ʀᴇᴘʏ ᴛᴏ ᴀ ᴘʜᴏᴛᴏ ғᴏʀ sᴛɪᴄᴋᴇʀ!';
