@@ -90,7 +90,7 @@ let dec = `
 
  > © 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃
 `
-await conn.sendMessage(from,{image:{url: `https://telegra.ph/file/f2be313fe820b56b47748.png`},caption:dec},{quoted:mek});
+await conn.sendMessage(from,{image:{url: `https://files.catbox.moe/gm88nn.png`},caption:dec},{quoted:mek});
 
 }catch(e){
 console.log(e)
