@@ -1,6 +1,7 @@
 const { cmd } = require('../command');
 const fg = require('api-dylux');
 const yts = require('yt-search');
+const axios = require('axios');
 
 // SONG COMMAND
 cmd({
@@ -48,8 +49,16 @@ async (conn, mek, m, { from, q, reply }) => {
                    `👀 *Size:* ${down.size}\n`;
 
         await conn.sendMessage(from, { image: { url: thumbnail || down.thumbnail }, caption: desc }, { quoted: mek });
-        await conn.sendMessage(from, { audio: { url: down.dl_url }, mimetype: "audio/mpeg" }, { quoted: mek });
-        await conn.sendMessage(from, { document: { url: down.dl_url }, mimetype: "audio/mpeg", fileName: `${title || down.title}.mp3` }, { quoted: mek });
+
+        // Download the file as a buffer
+        const response = await axios.get(down.dl_url, { responseType: 'arraybuffer' });
+        const audioBuffer = Buffer.from(response.data, 'binary');
+
+        // Send audio
+        await conn.sendMessage(from, { audio: audioBuffer, mimetype: "audio/mpeg" }, { quoted: mek });
+
+        // Send as document
+        await conn.sendMessage(from, { document: audioBuffer, mimetype: "audio/mpeg", fileName: `${title || down.title}.mp3` }, { quoted: mek });
 
     } catch (e) {
         console.error("[SONG COMMAND] Error:", e);
@@ -103,8 +112,16 @@ async (conn, mek, m, { from, q, reply }) => {
                    `👀 *Size:* ${down.size}\n`;
 
         await conn.sendMessage(from, { image: { url: thumbnail || down.thumbnail }, caption: desc }, { quoted: mek });
-        await conn.sendMessage(from, { video: { url: down.dl_url }, mimetype: "video/mp4" }, { quoted: mek });
-        await conn.sendMessage(from, { document: { url: down.dl_url }, mimetype: "video/mp4", fileName: `${title || down.title}.mp4` }, { quoted: mek });
+
+        // Download the file as a buffer
+        const response = await axios.get(down.dl_url, { responseType: 'arraybuffer' });
+        const videoBuffer = Buffer.from(response.data, 'binary');
+
+        // Send video
+        await conn.sendMessage(from, { video: videoBuffer, mimetype: "video/mp4" }, { quoted: mek });
+
+        // Send as document
+        await conn.sendMessage(from, { document: videoBuffer, mimetype: "video/mp4", fileName: `${title || down.title}.mp4` }, { quoted: mek });
 
     } catch (e) {
         console.error("[VIDEO COMMAND] Error:", e);
