@@ -14,14 +14,24 @@ async (conn, mek, m, { from, q, reply }) => {
         const url = q.trim();
         console.log("[TIKTOK COMMAND] Input URL:", url);
 
-        // Validate TikTok URL (both shortened and full links)
-        const isTikTokUrl = url.match(/^(https?:\/\/)?(www\.)?(tiktok\.com)\/.+$/);
-        if (!isTikTokUrl) {
+        // Validate and normalize TikTok URL (shortened or full links)
+        let fullUrl;
+        if (url.match(/^https:\/\/vt\.tiktok\.com\/\S+$/)) {
+            // If it's a shortened TikTok URL (like https://vt.tiktok.com/...)
+            const response = await axios.get(url);
+            const redirectedUrl = response.request.res.responseUrl;
+            fullUrl = redirectedUrl;
+        } else if (url.match(/^https:\/\/www\.tiktok\.com\/\S+$/)) {
+            // If it's a full TikTok URL
+            fullUrl = url;
+        } else {
             return reply("❌ Invalid TikTok URL. Please provide a valid TikTok video link.");
         }
 
+        console.log("[TIKTOK COMMAND] Full URL:", fullUrl);
+
         // Fetch video download link using an API (you can replace with another API if needed)
-        const apiUrl = `https://api.dylux.com/tiktok?url=${encodeURIComponent(url)}`;
+        const apiUrl = `https://api.dylux.com/tiktok?url=${encodeURIComponent(fullUrl)}`;
         const { data } = await axios.get(apiUrl);
 
         if (!data || !data.video || !data.video.url) {
@@ -34,7 +44,7 @@ async (conn, mek, m, { from, q, reply }) => {
         console.log("[TIKTOK COMMAND] Download URL:", downloadUrl);
 
         // Send the video directly via the download URL
-        await conn.sendMessage(from, { video: { url: downloadUrl }, mimetype: "video/mp4", caption: `🎥 *Downloaded from TikTok*\n\n🔗 *Source URL:* ${url}` }, { quoted: mek });
+        await conn.sendMessage(from, { video: { url: downloadUrl }, mimetype: "video/mp4", caption: `🎥 *Downloaded from TikTok*\n\n🔗 *Source URL:* ${fullUrl}` }, { quoted: mek });
 
     } catch (e) {
         console.error("[TIKTOK COMMAND] Error:", e);
