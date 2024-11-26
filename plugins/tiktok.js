@@ -14,13 +14,13 @@ async (conn, mek, m, { from, q, reply }) => {
         const url = q.trim();
         console.log("[TIKTOK COMMAND] Input URL:", url);
 
-        // Validate TikTok URL
+        // Validate TikTok URL (both shortened and full links)
         const isTikTokUrl = url.match(/^(https?:\/\/)?(www\.)?(tiktok\.com)\/.+$/);
         if (!isTikTokUrl) {
             return reply("❌ Invalid TikTok URL. Please provide a valid TikTok video link.");
         }
 
-        // Fetch video download link using an API
+        // Fetch video download link using an API (you can replace with another API if needed)
         const apiUrl = `https://api.dylux.com/tiktok?url=${encodeURIComponent(url)}`;
         const { data } = await axios.get(apiUrl);
 
