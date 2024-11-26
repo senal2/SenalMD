@@ -30,8 +30,8 @@ async (conn, mek, m, { from, q, reply }) => {
 
         console.log("[TIKTOK COMMAND] Full URL:", fullUrl);
 
-        // Fetch video download link using an API (you can replace with another API if needed)
-        const apiUrl = `https://api.dylux.com/tiktok?url=${encodeURIComponent(fullUrl)}`;
+        // Use an alternative API (like 'https://tiktokapi.com' or other available ones)
+        const apiUrl = `https://tiktokapi.com/api/video?url=${encodeURIComponent(fullUrl)}`;
         const { data } = await axios.get(apiUrl);
 
         if (!data || !data.video || !data.video.url) {
