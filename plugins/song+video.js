@@ -1,97 +1,101 @@
-const {cmd , commands} = require('../command')
-const fg = require('api-dylux')
-const yts = require('yt-search')
+const { cmd, commands } = require('../command');
+const fg = require('api-dylux');
+const yts = require('yt-search');
 
+// SONG COMMAND
 cmd({
     pattern: "song",
-    desc: "download songs",
+    desc: "Download songs",
     category: "download",
     react: "🎵",
     filename: __filename
 },
-async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
-try{
-if(!q) return reply("*කරුණාකර Link එකක් හො නමක් ලබා දෙන්න 🔎...*")
-const search = await yts(q)
-const data = search.videos[0]
-const url = data.url
+async (conn, mek, m, { from, q, reply }) => {
+    try {
+        if (!q) return reply("❌ Please provide a song name or YouTube link.");
 
-let desc = `╭━❮◆ SENAL MD SONG DOWNLOADER ◆❯━╮
+        const isYouTubeUrl = q.match(/^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/);
+        let url, title, thumbnail;
 
-┃➤✰ 𝚃𝙸𝚃𝙻𝙴 : ${data.title}
+        if (isYouTubeUrl) {
+            url = q; // Use direct URL
+        } else {
+            const search = await yts(q);
+            const data = search.videos[0];
 
-┃➤✰ 𝚅𝙸𝙴𝚆𝚂 : ${data.views}
+            if (!data) {
+                return reply("❌ No video found for the given query.");
+            }
 
-┃➤✰ 𝙳𝙴𝚂𝙲𝚁𝙸𝙿𝚃𝙸𝙾𝙽 : ${data.description}
+            url = data.url;
+            title = data.title;
+            thumbnail = data.thumbnail;
+        }
 
-┃➤✰𝚃𝙸𝙼𝙴 : ${data.timestamp}
+        const down = await fg.yta(url); // Download audio
+        if (!down || !down.dl_url) {
+            return reply("❌ Unable to fetch the download URL.");
+        }
 
-┃➤  𝙰𝙶𝙾 :  ${data.ago}
-╰━━━━━━━━━━━━━━━⪼
+        let desc = `🎵 *SENAL MD SONG DOWNLOADER*\n\n` +
+                   `🎼 *Title:* ${title || down.title}\n` +
+                   `👀 *Size:* ${down.size}\n`;
 
+        await conn.sendMessage(from, { image: { url: thumbnail || down.thumbnail }, caption: desc }, { quoted: mek });
+        await conn.sendMessage(from, { audio: { url: down.dl_url }, mimetype: "audio/mpeg" }, { quoted: mek });
+        await conn.sendMessage(from, { document: { url: down.dl_url }, mimetype: "audio/mpeg", fileName: `${title || down.title}.mp3` }, { quoted: mek });
 
-> © 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃
+    } catch (e) {
+        console.error(e);
+        reply("❌ An error occurred while processing your song request.");
+    }
+});
 
-`
-await conn.sendMessage(from,{image:{url: data.thumbnail},caption:desc},{quoted:mek});
-
-//download audio
-
-let down = await fg.yta(url)  
-let downloadUrl = down.dl_url
-
-//send audio
-await conn.sendMessage(from,{audio:{url: downloadUrl},mimetype:"audio/mpeg"},{quoted:mek})
-await conn.sendMessage(from,{document:{url: downloadUrl},mimetype:"audio/mpeg",fileName:data.title + "mp3",caption:"©ᴘᴏᴡᴇʀᴇᴅ ʙʏ MR SENAL"},{quoted:mek})
-}catch(e){
-reply(`${e}`)
-}
-})
-
-//===========video-dl===========
-
+// VIDEO COMMAND
 cmd({
     pattern: "video",
-    desc: "download video",
+    desc: "Download videos",
     category: "download",
     react: "🎥",
     filename: __filename
 },
-async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
-try{
-if(!q) return reply("*කරුණාකර Link එකක් හො නමක් ලබා දෙන්න 🔎...*")
-const search = await yts(q)
-const data = search.videos[0]
-const url = data.url
+async (conn, mek, m, { from, q, reply }) => {
+    try {
+        if (!q) return reply("❌ Please provide a video name or YouTube link.");
 
-let des = `╭━❮◆ SENAL MD VIDEO DOWNLOADER ◆❯━╮
+        const isYouTubeUrl = q.match(/^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/);
+        let url, title, thumbnail;
 
-┃➤✰ 𝚃𝙸𝚃𝙻𝙴 : ${data.title}
+        if (isYouTubeUrl) {
+            url = q; // Use direct URL
+        } else {
+            const search = await yts(q);
+            const data = search.videos[0];
 
-┃➤✰ 𝚅𝙸𝙴𝚆𝚂 : ${data.views}
+            if (!data) {
+                return reply("❌ No video found for the given query.");
+            }
 
-┃➤✰ 𝙳𝙴𝚂𝙲𝚁𝙸𝙿𝚃𝙸𝙾𝙽 : ${data.description}
+            url = data.url;
+            title = data.title;
+            thumbnail = data.thumbnail;
+        }
 
-┃➤✰𝚃𝙸𝙼𝙴 : ${data.timestamp}
+        const down = await fg.ytv(url); // Download video
+        if (!down || !down.dl_url) {
+            return reply("❌ Unable to fetch the download URL.");
+        }
 
-┃➤  𝙰𝙶𝙾 :  ${data.ago}
-╰━━━━━━━━━━━━━━━⪼
+        let desc = `🎥 *SENAL MD VIDEO DOWNLOADER*\n\n` +
+                   `🎬 *Title:* ${title || down.title}\n` +
+                   `👀 *Size:* ${down.size}\n`;
 
+        await conn.sendMessage(from, { image: { url: thumbnail || down.thumbnail }, caption: desc }, { quoted: mek });
+        await conn.sendMessage(from, { video: { url: down.dl_url }, mimetype: "video/mp4" }, { quoted: mek });
+        await conn.sendMessage(from, { document: { url: down.dl_url }, mimetype: "video/mp4", fileName: `${title || down.title}.mp4` }, { quoted: mek });
 
-> © 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐄𝐍𝐀𝐋 𝐌𝐃
-`
-await conn.sendMessage(from,{image:{url: data.thumbnail},caption:des},{quoted:mek});
-
-//download video
-
-let down = await fg.ytv(url)  
-let downloadUrl = down.dl_url
-
-//send video
-await conn.sendMessage(from,{video:{url: downloadUrl},mimetype:"video/mp4"},{quoted:mek})
-await conn.sendMessage(from,{document:{url: downloadUrl},mimetype:"video/mp4",fileName:data.title + "mp4",caption:"©ᴘᴏᴡᴇʀᴇᴅ ʙʏ senal md"},{quoted:mek})
-    
-}catch(a){
-reply(`${a}`)
-}
-})
+    } catch (e) {
+        console.error(e);
+        reply("❌ An error occurred while processing your video request.");
+    }
+});
