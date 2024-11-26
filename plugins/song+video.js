@@ -1,130 +1,96 @@
-const { cmd } = require('../command');
-const fg = require('api-dylux');
-const yts = require('yt-search');
-const axios = require('axios');
+const {cmd , commands} = require('../command')
+const fg = require('api-dylux')
+const yts = require('yt-search')
 
-// SONG COMMAND
 cmd({
     pattern: "song",
-    desc: "Download songs",
+    desc: "download songs",
     category: "download",
     react: "🎵",
     filename: __filename
 },
-async (conn, mek, m, { from, q, reply }) => {
-    try {
-        if (!q) return reply("❌ Please provide a song name or YouTube link.");
-        console.log("[SONG COMMAND] Input Query:", q);
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+if(!q) return reply("*කරුණාකර Link එකක් හො නමක් ලබා දෙන්න 🔎...*")
+const search = await yts(q)
+const data = search.videos[0]
+const url = data.url
 
-        const isYouTubeUrl = q.match(/^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/);
-        let url, title, thumbnail;
+let desc = `╭━❮◆ SENAL MD SONG DOWNLOADER ◆❯━╮
 
-        if (isYouTubeUrl) {
-            url = q;
-            console.log("[SONG COMMAND] Detected YouTube URL:", url);
-        } else {
-            const search = await yts(q);
-            console.log("[SONG COMMAND] Search Results:", search);
+┃➤✰ 𝚃𝙸𝚃𝙻𝙴 : ${data.title}
 
-            const data = search.videos[0];
-            if (!data) {
-                return reply("❌ No video found for the given query.");
-            }
+┃➤✰ 𝚅𝙸𝙴𝚆𝚂 : ${data.views}
 
-            url = data.url;
-            title = data.title;
-            thumbnail = data.thumbnail;
-            console.log("[SONG COMMAND] Extracted Data:", { url, title, thumbnail });
-        }
+┃➤✰ 𝙳𝙴𝚂𝙲𝚁𝙸𝙿𝚃𝙸𝙾𝙽 : ${data.description}
 
-        const down = await fg.yta(url);
-        console.log("[SONG COMMAND] API-Dylux Response:", down);
+┃➤✰𝚃𝙸𝙼𝙴 : ${data.timestamp}
 
-        if (!down || !down.dl_url) {
-            return reply("❌ Unable to fetch the download URL.");
-        }
+┃➤  𝙰𝙶𝙾 :  ${data.ago}
+╰━━━━━━━━━━━━━━━⪼
 
-        let desc = `🎵 *SENAL MD SONG DOWNLOADER*\n\n` +
-                   `🎼 *Title:* ${title || down.title}\n` +
-                   `👀 *Size:* ${down.size}\n`;
 
-        await conn.sendMessage(from, { image: { url: thumbnail || down.thumbnail }, caption: desc }, { quoted: mek });
+> ©ᴘᴏᴡᴇʀᴇᴅ ʙʏ 𝚂𝙴𝙽𝙰𝙻 
+`
+await conn.sendMessage(from,{image:{url: data.thumbnail},caption:desc},{quoted:mek});
 
-        // Download the file as a buffer
-        const response = await axios.get(down.dl_url, { responseType: 'arraybuffer' });
-        const audioBuffer = Buffer.from(response.data, 'binary');
+//download audio
 
-        // Send audio
-        await conn.sendMessage(from, { audio: audioBuffer, mimetype: "audio/mpeg" }, { quoted: mek });
+let down = await fg.yta(url)  
+let downloadUrl = down.dl_url
 
-        // Send as document
-        await conn.sendMessage(from, { document: audioBuffer, mimetype: "audio/mpeg", fileName: `${title || down.title}.mp3` }, { quoted: mek });
+//send audio
+await conn.sendMessage(from,{audio:{url: downloadUrl},mimetype:"audio/mpeg"},{quoted:mek})
+await conn.sendMessage(from,{document:{url: downloadUrl},mimetype:"audio/mpeg",fileName:data.title + "mp3",caption:"©ᴘᴏᴡᴇʀᴇᴅ ʙʏ 𝚜𝚎𝚗𝚊𝚕 𝚖𝚍"},{quoted:mek})
+}catch(e){
+reply(`${e}`)
+}
+})
 
-    } catch (e) {
-        console.error("[SONG COMMAND] Error:", e);
-        reply(`❌ An error occurred while processing your song request.\n\n*Error Details:* ${e.message}`);
-    }
-});
+//===========video-dl===========
 
-// VIDEO COMMAND
 cmd({
     pattern: "video",
-    desc: "Download videos",
+    desc: "download video",
     category: "download",
     react: "🎥",
     filename: __filename
 },
-async (conn, mek, m, { from, q, reply }) => {
-    try {
-        if (!q) return reply("❌ Please provide a video name or YouTube link.");
-        console.log("[VIDEO COMMAND] Input Query:", q);
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+if(!q) return reply("*කරුණාකර Link එකක් හො නමක් ලබා දෙන්න 🔎...*")
+const search = await yts(q)
+const data = search.videos[0]
+const url = data.url
 
-        const isYouTubeUrl = q.match(/^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/);
-        let url, title, thumbnail;
+let des = `╭━❮◆ SENAL MD VIDEO DOWNLOADER ◆❯━╮
 
-        if (isYouTubeUrl) {
-            url = q;
-            console.log("[VIDEO COMMAND] Detected YouTube URL:", url);
-        } else {
-            const search = await yts(q);
-            console.log("[VIDEO COMMAND] Search Results:", search);
+┃➤✰ 𝚃𝙸𝚃𝙻𝙴 : ${data.title}
 
-            const data = search.videos[0];
-            if (!data) {
-                return reply("❌ No video found for the given query.");
-            }
+┃➤✰ 𝚅𝙸𝙴𝚆𝚂 : ${data.views}
 
-            url = data.url;
-            title = data.title;
-            thumbnail = data.thumbnail;
-            console.log("[VIDEO COMMAND] Extracted Data:", { url, title, thumbnail });
-        }
+┃➤✰ 𝙳𝙴𝚂𝙲𝚁𝙸𝙿𝚃𝙸𝙾𝙽 : ${data.description}
 
-        const down = await fg.ytv(url);
-        console.log("[VIDEO COMMAND] API-Dylux Response:", down);
+┃➤✰𝚃𝙸𝙼𝙴 : ${data.timestamp}
 
-        if (!down || !down.dl_url) {
-            return reply("❌ Unable to fetch the download URL.");
-        }
+┃➤  𝙰𝙶𝙾 :  ${data.ago}
+╰━━━━━━━━━━━━━━━⪼
 
-        let desc = `🎥 *SENAL MD VIDEO DOWNLOADER*\n\n` +
-                   `🎬 *Title:* ${title || down.title}\n` +
-                   `👀 *Size:* ${down.size}\n`;
 
-        await conn.sendMessage(from, { image: { url: thumbnail || down.thumbnail }, caption: desc }, { quoted: mek });
+> ©ᴘᴏᴡᴇʀᴇᴅ ʙʏ 𝚂𝙴𝙽𝙰𝙻 
+`
+await conn.sendMessage(from,{image:{url: data.thumbnail},caption:des},{quoted:mek});
 
-        // Download the file as a buffer
-        const response = await axios.get(down.dl_url, { responseType: 'arraybuffer' });
-        const videoBuffer = Buffer.from(response.data, 'binary');
+//download video
 
-        // Send video
-        await conn.sendMessage(from, { video: videoBuffer, mimetype: "video/mp4" }, { quoted: mek });
+let down = await fg.ytv(url)  
+let downloadUrl = down.dl_url
 
-        // Send as document
-        await conn.sendMessage(from, { document: videoBuffer, mimetype: "video/mp4", fileName: `${title || down.title}.mp4` }, { quoted: mek });
-
-    } catch (e) {
-        console.error("[VIDEO COMMAND] Error:", e);
-        reply(`❌ An error occurred while processing your video request.\n\n*Error Details:* ${e.message}`);
-    }
-});
+//send video
+await conn.sendMessage(from,{video:{url: downloadUrl},mimetype:"video/mp4"},{quoted:mek})
+await conn.sendMessage(from,{document:{url: downloadUrl},mimetype:"video/mp4",fileName:data.title + "mp4",caption:"©ᴘᴏᴡᴇʀᴇᴅ ʙʏ 𝚜𝚎𝚗𝚊𝚕 𝚖𝚍"},{quoted:mek})
+    
+}catch(a){
+reply(`${a}`)
+}
+})
