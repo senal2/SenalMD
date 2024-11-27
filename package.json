@@ -8,17 +8,20 @@
     "stop": "pm2 stop SENAL-MD-V1",
     "restart": "pm2 restart SENAL-MD-V1"
   },
-   "dependencies": {
+  "dependencies": {
     "@adiwajshing/keyed-db": "^0.2.4",
     "@whiskeysockets/baileys": "6.6.0",
     "api-dylux": "1.8.5",
-    "axios": "^1.2.5",
+    "axios": "^1.7.8",
     "dotenv": "^16.4.5",
     "express": "latest",
     "file_size_url": "1.0.4",
+    "form-data": "^4.0.1",
+    "fs": "^0.0.1-security",
     "fs-extra": "^11.1.0",
     "google-tts-api": "^2.0.2",
     "megajs": "^1.1.0",
+    "mrnima-moviedl": "^1.0.0",
     "node-fetch": "^2.6.1",
     "path": "^0.12.7",
     "pino": "^7.0.5",
